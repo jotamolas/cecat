@@ -1,0 +1,39 @@
+{% extends "AppBundle:Default:admin.html.twig"%}
+{% block title %}
+    Editar Servicio: {{ service.description}}
+{% endblock %}
+
+{% block action_content %}
+    <div class="card">
+        <div class="card-header">Editar Servicio</div>
+        <div class="card-body">
+            {% form_theme edit_form 'bootstrap_3_horizontal_layout.html.twig' %}  
+            {{ form_start(edit_form) }}
+            <div class="row">
+                <div class="col-sm-8 ">
+                    <div class="form-group">
+                        {{ form_errors(edit_form.description) }}
+                        <label>Descripción</label>
+                        {{ form_widget(edit_form.description) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        {{ form_errors(edit_form.price) }}
+                        <label>Costo</label>
+                        {{ form_widget(edit_form.price) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <input type="submit" class="btn btn-outline-primary btn-sm" value="Grabar"/>
+                </div>
+            </div>
+            {{ form_end(edit_form) }}
+        </div>
+
+    </div>
+{% endblock %}

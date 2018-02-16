@@ -1,0 +1,129 @@
+{% extends 'AppBundle:Default:admin.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+
+
+    <style type="text/css">
+        .invoice-head td {
+            padding: 0 8px;
+        }
+        .container {
+            padding-top:30px;
+        }
+        .invoice-bodty{
+            background-color:transparent;
+        }
+        .invoice-thank{
+            margin-top: 60px;
+            padding: 5px;
+        }
+        address{
+            margin-top:15px;
+        }
+        img{
+            width:200px;
+            height: 50px;
+        }
+    </style>
+{% endblock stylesheets %}
+
+{% block title %}
+    Compra de Crédito - Recibo
+{% endblock title %}
+
+
+{% block action_content %}
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Comprobante Compra de Crédito</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="container">
+                    <div class="row">
+                        <div class="span4">
+                            <img src="{{ asset('bundles/app/images/logo.svg')}}">
+                            <address>
+                                <strong>Colegio de Escribanos de Catamarca</strong><br>
+                                Prado 337<br>
+                                Catamarca, Argentina<br>
+                            </address>
+                        </div>
+                        <div class="span4 well">
+                            <table class="invoice-head">
+                                <tbody>
+
+                                    <tr>
+                                        <td class="pull-right"><strong>Transaccion #:</strong></td>
+                                        <td>{{ transaction.id}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pull-right"><strong>Notario</strong></td>
+                                        <td>{{ transaction.notary.lastname}}, {{ transaction.notary.firstname}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pull-right"><strong>Fecha:</strong></td>
+                                        <td>{{ transaction.createdAt | date('d/m/Y')}}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span8">
+                            <h2>Recibo de Transacción - Compra de Créditos</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span8 well invoice-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Descripción</th>
+                                        <th>Fecha</th>
+                                        <th>Cantidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ transaction.service.description }}</td>
+                                        <td>{{ transaction.createdAt | date('d/m/Y')}}</td>
+                                        <td>{{ transaction.ammount }}</td>
+                                    </tr><tr>
+                                        <td>&nbsp;</td>
+                                        <td><strong>Total</strong></td>
+                                        <td><strong>{{ transaction.ammount }}</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span8 well invoice-thank">
+                            <h5 style="text-align:center;">Plataforma Virtual</h5>
+                            <h6 style="text-align:center;"> Documento no válido como Factura </h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span3">
+                            <strong>Telefono:</strong> <a href="tel:0383-4430369">0383-4430369</a>
+                        </div>
+                        <div class="span3">
+                            <strong>Email:</strong> <a href="mailto:escribanoscatamarca@gmail.com">escribanoscatamarca@gmail.com</a>
+                        </div>
+                        <div class="span3">
+                            <strong>Web:</strong> <a href="http://www.escribanoscatamarca.com.ar">escribanoscatamarca.com.ar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="panel-footer">          
+            <a href="{{ path('action_accredit_print', {'transaction' : transaction.id})}}" class="btn btn-primary"><i class="fa fa-print"></i> Imprimir</a>
+        </div> 
+    </div>
+
+{% endblock %}

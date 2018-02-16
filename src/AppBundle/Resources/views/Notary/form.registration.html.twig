@@ -1,0 +1,14 @@
+{% extends "AppBundle:Default:index.html.twig"%}
+{% block action_content %}
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">Registro de Notario</div>
+            <div class="panel-body">
+                {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}                    
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}   

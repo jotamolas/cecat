@@ -1,0 +1,41 @@
+{% extends "AppBundle:Default:front.html.twig"%}
+{% block action_content %}
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">RENAPER - Mis Consultas</div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped" style="font-size: 14px">
+                        <thead>
+                            <tr>
+                                <th>Nro.Transaccion</th>
+                                <th>Servicio</th>
+                                <th>Fecha</th>
+                                <th class="text-center">PDF</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for query in queries  %}
+                                {% set file = query.pdf | trim("/var/www/cecat/app/../web") %}
+                                {% set file = file | trim("/web") %}
+                                <tr>
+                                    <td>{{ query.transaction.id }}</td>
+                                    <td>{{ query.transaction.service.description }}</td>
+                                    <td>{{ query.transaction.createdAt | date('Y-m-d H:i:s') }}</td>
+                                    <td class="text-center"><a href="/renaper/{{ query.fileName }}" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                            {% endfor%}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center">
+                    {{ knp_pagination_render(queries) }}
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %} 

@@ -1,0 +1,146 @@
+{% extends '::base.html.twig' %}
+
+
+
+
+{% block stylesheets %}
+
+<style type="text/css">
+.card-renaper{
+   font-size: 14px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  
+   padding-top: 7px;
+   padding-bottom: 5px;
+   margin-bottom: 20px;
+   background-color: hsla(42, 87%, 92%, 0.37)
+}
+dd{
+    margin-bottom: 0px !important;
+}
+
+.flexrow {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.flexrow > div {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  margin-right: 10%;
+ 
+}
+.flexrow > div:last-child {
+  margin-right: 0;
+}
+</style>
+
+{% endblock %}
+
+
+
+{% block body %}
+<div class="container">
+    <div class="row card-renaper flexrow">
+        <div class="col-xs-4">
+            <img src="{{card.foto}}" class="img-responsive" alt="" style="width: 275px">
+        </div>
+        <div class="col-xs-8"> 
+            <div class="row flexrow">
+                <div class="col-xs-6">
+                    <dl>
+                        <dd>Nombres</dd>
+                        <dt>{{ card.nombres | upper }}</dt> 
+                    </dl>                                      
+                </div>
+                <div class="col-xs-6 ">
+                    <dl>
+                        <dd>Apellido</dd>
+                        <dt>{{ card.apellido | upper }}</dt> 
+                    </dl>
+                </div>
+            </div>
+            <div class="row flexrow">
+                <div class="col-xs-6">
+                    <dl>
+                        <dd>Domicilio</dd>
+                        <dt>{{ card.calle}} {{ card.numero}}</dt> 
+                    </dl>
+                </div>
+                <div class="col-xs-6">
+                    <dl>
+                        <dd>Barrio</dd>
+                        <dt>{{ card.barrio}} {{ card.monoblock}}</dt> 
+                    </dl>
+                </div>
+            </div>
+            <div class="row flexrow">
+                <div class="col-xs-6">
+                    <dl>
+                        <dd>Ciudad</dd>
+                        <dt>{{ card.ciudad}}</dt> 
+                    </dl>
+                </div>
+                <div class="col-xs-6">
+                    <dl>
+                        <dd>Municipio</dd>
+                        <dt>{{ card.municipio}}</dt> 
+                    </dl>
+                </div>
+            </div>
+            <div class="row flexrow">
+                <div class="col-xs-6">
+                    <dl>
+                        <dd>Provincia</dd>
+                        <dt>{{ card.provincia}}</dt> 
+                    </dl>
+                </div>
+                <div class="col-xs-6">
+                    <dl>
+                        <dd>País</dd>
+                        <dt>{{ card.pais}}</dt> 
+                    </dl>
+                </div>
+            </div>
+            <div class="row flexrow">
+                <div class="col-xs-4">
+                    <dl>
+                        <dd>Fecha Nacimiento</dd>
+                        <dt>{{ card.fechaNacimiento}}</dt> 
+                    </dl>
+                </div>
+                <div class="col-xs-4">
+                    <dl>
+                        <dd>Id Ciudadano</dd>
+                        <dt>{{ card.idciudadano}}</dt> 
+                    </dl>
+                </div>
+                <div class="col-xs-4">
+                    <dl>
+                        <dd>Ejemplar</dd>
+                        <dt>{{ card.EJEMPLAR}}</dt>
+                    </dl>
+
+                </div>
+            </div>
+            <div class="row flexrow">
+                <div class="col-xs-6">
+                    <dl>
+                        <dd>Mensaje Fallecimiento</dd>
+                        <dt>{{ card.mensaf}}</dt>
+                    </dl>
+                </div>
+                <div class="col-xs-6">
+                    <dl>
+                        <dd>Fecha fallecimiento</dd>
+                        <dt>{{ card.fechaf}}</dt>
+                    </dl>
+                </div>
+            </div>                
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+

@@ -1,0 +1,112 @@
+{% extends "AppBundle:Default:admin.html.twig"%}
+{% block title %}
+    Registrar Notario
+{% endblock %}
+{% block action_content %}
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Registro de Notario</div>
+            <div class="panel-body">
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <div class="form-group">
+                            {{ form_errors(form.firstName) }}
+                            <label>Nombre</label>
+                            {{ form_widget(form.firstName) }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="form-group">
+                            {{ form_errors(form.lastName) }}
+                            <label>Apellido</label>
+                            {{ form_widget(form.lastName) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <div class="form-group">
+                            {{ form_errors(form.email) }}
+                            <label>Correo Electrónico</label>
+                            {{ form_widget(form.email) }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="form-group">
+                            {{ form_errors(form.username) }}
+                            <label>Nombre de Usuario</label>
+                            {{ form_widget(form.username) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <div class="form-group">
+                            {{ form_errors(form.phone) }}
+                            <label>Teléfono</label>
+                            {{ form_widget(form.phone) }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="form-group">
+                            {{ form_errors(form.idPerson) }}
+                            <label>Numero de Documento</label>
+                            {{ form_widget(form.idPerson) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <div class="form-group">
+                            {{ form_errors(form.registro) }}
+                            <label>Registro</label>
+                            {{ form_widget(form.registro) }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="form-group">
+                            {{ form_errors(form.notaryTypeId ) }}
+                            <label>Tipo</label>
+                            {{ form_widget(form.notaryTypeId ) }}
+                        </div>
+                    </div>
+                </div>        
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <div class="form-group">
+                            {{ form_errors(form.plainPassword.first) }}
+                            <label>Contraseña</label>
+                            {{ form_widget(form.plainPassword.first) }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="form-group">
+                            {{ form_errors(form.plainPassword.second) }}
+                            <label>Confirmar Contraseña</label>
+                            {{ form_widget(form.plainPassword.second) }}
+                        </div>
+                    </div>
+                </div>        
+                {{ form_rest(form) }}   
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %} 
+{% block javascripts %}
+    {{ parent ()}}
+    <script type="text/javascript">
+        $("#notary_registration_registro").select2();
+    </script>
+{% endblock %} 
+
+
+
+

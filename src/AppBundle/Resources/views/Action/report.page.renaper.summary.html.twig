@@ -1,0 +1,78 @@
+
+{% extends is_granted('ROLE_ACCOUNTANT') 
+    ? 'AppBundle:Default:accountant.html.twig' 
+    : 'AppBundle:Default:admin.html.twig' %}
+
+{% block title %}
+    Reportes -  RENAPER
+{% endblock title %}
+{% block action_content %}
+
+    <div class="row">
+        <div class="page-header">
+            <h1>Reporte RENAPER - <small> Resumen de Consultas </small> </h1>            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-files-o fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{ statistics.0.Queries }}</div>
+                            <div>Consultas Totales</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-money fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{ statistics.0.Credits }}</div>
+                            <div>Creditos Totales</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">                    
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-calendar fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{ from | date('d/m/Y') }} - {{ to | date('d/m/Y') }}</div>
+                            <div>Fechas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">Detalle</div>
+            <div class="panel-body">
+                {% include 'AppBundle:Action:table.renaper.summary.html.twig' with {'queries' : queries} %}
+            </div>
+            <div class="panel-footer">
+                <a href="{{ path('action_print_renaper_report_queries_summary',{'from': from | date('dmY')   , 'to': to | date('dmY') })}}" class="btn btn-default"><i class="fa fa fa-file-pdf-o" aria-hidden="true"></i> Exportar</a>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+

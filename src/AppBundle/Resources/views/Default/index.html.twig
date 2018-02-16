@@ -1,0 +1,16 @@
+{% extends "::base.html.twig"%}
+{% block title %}
+    Inicio
+
+{% endblock %}
+{% block body %}
+    <div class="container-fluid">
+        Index Page:
+        <ul>
+            <li><a href="{{path('cecat_admin_page')}}">Admin Module</a></li>
+            <li><a href="{{path('cecat_front_page')}}">Front Module</a></li>
+        </ul>
+    </div>
+{% endblock %}
+
+

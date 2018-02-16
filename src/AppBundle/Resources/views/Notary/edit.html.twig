@@ -1,0 +1,108 @@
+{% extends "AppBundle:Default:admin.html.twig"%}
+{% block title %}
+    Editar Notario: {{ notary.lastName}}
+{% endblock %}
+{% block action_content %}
+    <div class="panel panel-default">
+        <div class="panel-heading">Editar Notario</div>
+        <div class="panel-body">
+            
+            {{ form_start(form_edit) }}
+            {{ form_errors(form_edit) }}
+            <div class="row">
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        {{ form_errors(form_edit.firstName) }}
+                        <label>Nombre</label>
+                        {{ form_widget(form_edit.firstName) }}
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        {{ form_errors(form_edit.lastName) }}
+                        <label>Apellido</label>
+                        {{ form_widget(form_edit.lastName) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        {{ form_errors(form_edit.email) }}
+                        <label>Correo Electrónico</label>
+                        {{ form_widget(form_edit.email) }}
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        {{ form_errors(form_edit.username) }}
+                        <label>Nombre de Usuario</label>
+                        {{ form_widget(form_edit.username) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        {{ form_errors(form_edit.phone) }}
+                        <label>Teléfono</label>
+                        {{ form_widget(form_edit.phone) }}
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        {{ form_errors(form_edit.idPerson) }}
+                        <label>Numero de Documento</label>
+                        {{ form_widget(form_edit.idPerson) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        {{ form_errors(form_edit.registro) }}
+                        <label>Registro</label>
+                        {{ form_widget(form_edit.registro) }}
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        {{ form_errors(form_edit.notaryTypeId ) }}
+                        <label>Tipo</label>
+                        {{ form_widget(form_edit.notaryTypeId ) }}
+                    </div>
+                </div>
+            </div>        
+            <div class="row">
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        {{ form_errors(form_edit.plainPassword.first) }}
+                        <label>Contraseña</label>
+                        {{ form_widget(form_edit.plainPassword.first) }}
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        {{ form_errors(form_edit.plainPassword.second) }}
+                        <label>Confirmar Contraseña</label>
+                        {{ form_widget(form_edit.plainPassword.second) }}
+                    </div>
+                </div>
+            </div>        
+            {{ form_rest(form_edit) }}   
+            {{ form_end(form_edit) }}
+        </div>
+    </div>
+
+{% endblock %} 
+{% block javascripts %}
+    {{ parent ()}}
+    <script type="text/javascript">
+        $("#notary_registration_registro").select2();
+    </script>
+{% endblock %} 
+
+
+
+

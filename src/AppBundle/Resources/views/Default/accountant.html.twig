@@ -1,0 +1,105 @@
+{% extends "::base.html.twig"%}
+{% block title %}
+    Plataforma Virtual Colegio de Escribanos
+{% endblock %}
+
+{% block body %}
+    {% if is_granted('ROLE_ACCOUNTANT') %}
+        {% block content %}          
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; background: #0C2432; border-color: #7D6B14  ">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html" style="padding: 0px;">
+                        <img src="{{ asset('bundles/app/images/logo-brand.svg')}}" class="img-responsive" style="height: 100%;  width: auto; padding: 7px 15px;">
+                    </a>
+                </div>
+                <!-- /.navbar-header -->
+
+                <ul class="nav navbar-top-links navbar-right">
+
+
+                    <!-- /.dropdown -->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #fff">
+                            <i class="fa fa-user fa-fw"></i> {{ app.user.firstname}} {{ app.user.lastName}} <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#"><i class="fa fa-user fa-fw"></i>Perfil</a>
+                            </li>
+                            <li><a href="{{ path('person_change_password', {'person': app.user.id })}}"><i class="fa fa-unlock-alt fa-fw"></i> Cambiar Contraseña</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="{{ path('fos_user_security_logout')}}"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión</a>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-user -->
+                    </li>
+                    <!-- /.dropdown -->
+                </ul>
+                <!-- /.navbar-top-links -->
+
+                <div class="navbar-default sidebar" role="navigation">
+                    <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
+                            <li>
+                                <a href="{{ path('cecat_accountant_page')}}"></i> Home</a>
+                            </li>
+                            <li>
+                                <a href="#"></i> RENAPER - Reportes<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="{{ path('action_renaper_report_queries_summary')}}">Reporte - Detalle Consultas Realizadas</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('action_report_credits_summary')}}">Reporte - Detalle de Creditos Expendidos</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('action_report_accounts_balance')}}">Reporte - Consulta Saldos de Cuentas</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.sidebar-collapse -->
+                </div>
+                <!-- /.navbar-static-side -->
+            </nav>
+
+
+            <div id="page-wrapper">
+                <div class="container">
+                    <div class="row top-row">
+                        {% block action_content %}
+                            {# pass a string argument to get only the messages of that type #}
+                            {% for message in app.flashes('notice') %}
+                                <div class="alert alert-info">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+
+                            {# pass an array argument to get the messages of those types  #}
+                            {% for label, messages in app.flashes(['warning', 'error']) %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ label }}">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+
+        {% endblock %}
+
+    {% endif %}
+{% endblock %}
+
+
+

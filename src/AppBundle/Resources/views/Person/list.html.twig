@@ -1,0 +1,77 @@
+{% extends "AppBundle:Default:admin.html.twig"%}
+{% block action_content %}
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Listar Personas</div>
+        <div class="panel-body">
+            {# pass a string argument to get only the messages of that type #}
+            {% for message in app.flashes('notice') %}
+                <div class="alert alert-info">
+                    <p><strong>{{ message }}</strong></p>
+                </div>
+            {% endfor %}
+
+            {# pass an array argument to get the messages of those types  #}
+            {% for label, messages in app.flashes(['warning', 'error']) %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }}">
+                         <p><strong> {{ message }} </strong></p>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            <div class="table-responsive">
+                <table class="table table-bordered" style="font-size: 12px">
+                    <thead>
+                        <tr>
+                            <th>{{ sorter_link(persons, "p.id", "#")}}</th>
+                            <th>{{ sorter_link(persons, "p.idPerson", "DNI")}}</th>
+                            <th>{{ sorter_link(persons, "p.firstName", "Nombre")}}</th>
+                            <th>{{ sorter_link(persons, "p.lastName", "Apellido")}}</th>                            
+                            <th>Telefono</th>
+                            <th>E-mail</th>
+                            <th>Usuario</th>
+                            <th>Acciones</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>{{ filter_search(persons, "p.idPerson")}}</th>
+                            <th>{{ filter_search(persons, "p.firstName")}}</th>
+                            <th>{{ filter_search(persons, "p.lastName")}}</th>                            
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for person in persons %}
+                            <tr>
+                                <td>{{ person.id }}</td>
+                                <td>{{ person.idPerson }}</td>
+                                <td>{{ person.firstName }}</td>
+                                <td>{{ person.lastName }}</td>
+                                <td>{{ person.phone }}</td>
+                                <td>{{ person.email }}</td>
+                                <td>{{ person.username }}</td>                     
+                                <td>
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <a href="{{ path('person_activate_user',{'person': person.id})}}"  role="button" class="btn btn-default btn-xs">
+                                            <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="{{ path('person_change_password',{'person': person.id})}}"  role="button" class="btn btn-default btn-xs">
+                                            <i class="fa fa-key" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor%}
+                    </tbody>
+                </table> 
+                <div class="text-center">
+                    {{ pagination(persons) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %} 

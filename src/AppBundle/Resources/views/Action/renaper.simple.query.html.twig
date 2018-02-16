@@ -1,0 +1,9 @@
+{% extends is_granted('ROLE_NOTARIO') 
+    ? 'AppBundle:Default:front.html.twig' 
+    : 'AppBundle:Default:admin.html.twig' %}
+{% block title %}
+    Consulta RENAPER
+{% endblock title %}
+{% block action_content %}
+    {% include 'AppBundle:Action:form.find.person.html.twig' with {'form':form} %}
+{% endblock %}

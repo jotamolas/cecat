@@ -1,0 +1,54 @@
+{% extends is_granted('ROLE_NOTARIO') 
+    ? 'AppBundle:Default:front.html.twig' 
+    : 'AppBundle:Default:admin.html.twig' %}
+
+
+{% block action_content %}
+
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Movimientos de Cuenta: 
+                <p>
+                    <span class="text-muted">
+                        {{ account.description }}
+                    </span>
+                </p>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped" style="font-size: 14px">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Description</th>
+                                <th>Debito</th>
+                                <th>Credito</th>
+                                <th>Fecha</th>
+                                <th>Usuario</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for move in moves %}
+                                <tr>
+                                    <td>{{ move.id }}</td>
+                                    <td>{{ move.description }}</td>
+                                    <td>{{ move.debit }}</td>
+                                    <td>{{ move.credit }}</td>
+                                    <td>{{ move.createdAt | date('Y-m-d H:i:s') }}</td>
+                                    <td>{% if move.transaction.user %}{{ move.transaction.user.username }}{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center">
+                    {{ knp_pagination_render(moves) }}
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

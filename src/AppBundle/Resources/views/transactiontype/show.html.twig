@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Transactiontype</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ transactionType.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ transactionType.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('transactiontype_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('transactiontype_edit', { 'id': transactionType.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

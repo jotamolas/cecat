@@ -1,0 +1,12 @@
+{% extends "AppBundle:Default:index.html.twig"%}
+{% block action_content %}
+        <div class="card">
+            <h5 class="card-header">Buscar Persona</h5>
+            <div class="card-block">
+                {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}                    
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+{% endblock %}   

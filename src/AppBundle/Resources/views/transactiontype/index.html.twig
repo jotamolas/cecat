@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Transactiontypes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for transactionType in transactionTypes %}
+            <tr>
+                <td><a href="{{ path('transactiontype_show', { 'id': transactionType.id }) }}">{{ transactionType.id }}</a></td>
+                <td>{{ transactionType.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('transactiontype_show', { 'id': transactionType.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('transactiontype_edit', { 'id': transactionType.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('transactiontype_new') }}">Create a new transactionType</a>
+        </li>
+    </ul>
+{% endblock %}

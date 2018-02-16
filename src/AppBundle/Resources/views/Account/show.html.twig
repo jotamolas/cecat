@@ -1,0 +1,45 @@
+{% extends is_granted('ROLE_NOTARIO') 
+    ? 'AppBundle:Default:front.html.twig' 
+    : 'AppBundle:Default:admin.html.twig' %}
+
+{% block action_content %}
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading"> Cuenta de: {{ account.notary.lastname }}, {{ account.notary.firstname }} </div>
+            <div class="panel-body">
+
+                <div class="table-responsive">
+                    <table class="table table-bordered" style="font-size: 14px">
+                        <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ account.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td>{{ account.description }}</td>
+                            </tr>
+                            <tr>
+                                <th>Balance</th>
+                                <td>{{ account.balance }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a class="btn btn-primary btn-md" href="{{ path ('account_ledger', {'id': account.id }) }} " role="button">Movimientos</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a class="btn btn-primary btn-md" href="{{path ('account_edit',{'id':account.id })}}" role="button"> Editar</a>    
+                    {% else %}
+                        <a class="btn btn-primary btn-md disabled" href="{{path ('account_edit',{'id':account.id })}}" role="button"> Editar</a>    
+                    {% endif%}
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% if is_granted('ROLE_ADMIN')%}
+    {% extends "AppBundle:Default:admin.html.twig"%}
+    {% block title %}
+        Editar Cuenta: {{ account.description}}
+    {% endblock %}
+    {% block action_content %}
+        <div class="card">
+            <div class="card-header">Editar Cuenta</div>
+            <div class="card-body">
+                <div class="card-block">
+                    {% form_theme edit_form 'bootstrap_3_horizontal_layout.html.twig' %}  
+                    {{ form_start(edit_form) }}
+                    {{ form_widget(edit_form) }}
+                    {{ form_end(edit_form) }}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endif %}

@@ -1,0 +1,38 @@
+
+
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">Consulta RENAPER</div>
+        <div class="panel-body">
+            {#% form_theme form 'AppBundle:Form:custom.form.boostrap4.html.twig' %#}
+            {{ form_start(form) }}
+            <div class="row">
+                <div class="col-md-6 col-sm-3" >
+                    <div class="form-group">
+                        {{ form_errors(form.dni) }}
+                        <label>Documento de Identidad</label>
+                        {{ form_widget(form.dni) }}
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-3">
+                    <div class="form-group">
+                        {{ form_errors(form.genre) }}
+                        <label>Genero</label>
+                        {{ form_widget(form.genre) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 col-sm-3 col-sm-offset-6" >
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Consultar"/>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,78 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="panel panel-default">
+    <div class="panel-heading">Alta de Persona</div>
+    <div class="panel-body">
+        
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+        <div class="row">
+            <div class="col-6 ">
+                <div class="form-group">
+                    {{ form_errors(form.firstName) }}
+                    <label>Nombre</label>
+                    {{ form_widget(form.firstName) }}
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    {{ form_errors(form.lastName) }}
+                    <label>Apellido</label>
+                    {{ form_widget(form.lastName) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 ">
+                <div class="form-group">
+                    {{ form_errors(form.email) }}
+                    <label>Correo Electrónico</label>
+                    {{ form_widget(form.email) }}
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    {{ form_errors(form.username) }}
+                    <label>Nombre de Usuario</label>
+                    {{ form_widget(form.username) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 ">
+                <div class="form-group">
+                    {{ form_errors(form.phone) }}
+                    <label>Teléfono</label>
+                    {{ form_widget(form.phone) }}
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    {{ form_errors(form.idPerson) }}
+                    <label>Numero de Documento</label>
+                    {{ form_widget(form.idPerson) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 ">
+                <div class="form-group">
+                    {{ form_errors(form.plainPassword.first) }}
+                    <label>Contraseña</label>
+                    {{ form_widget(form.plainPassword.first) }}
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    {{ form_errors(form.plainPassword.second) }}
+                    <label>Confirmar Contraseña</label>
+                    {{ form_widget(form.plainPassword.second) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <input type="submit" class="btn btn-outline-primary" value="Grabar" />
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>

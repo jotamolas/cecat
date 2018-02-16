@@ -1,0 +1,46 @@
+{% extends is_granted('ROLE_ACCOUNTANT') 
+    ? 'AppBundle:Default:accountant.html.twig' 
+    : 'AppBundle:Default:admin.html.twig' %}
+
+{% block title %}
+    Reportes -  Saldos
+{% endblock title %}
+{% block action_content %}
+
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Balances de Cuentas: 
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped" style="font-size: 14px">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Credito</th>
+                                <th>Debito</th>
+                                <th>Saldo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for stat in statistics %}
+                                <tr>
+                                    <td>{{ stat.first_name }}</td>
+                                    <td>{{ stat.last_name }}</td>
+                                    <td>{{ stat.credit }}</td>
+                                    <td>{{ stat.debit }}</td>
+                                    <td>{{ stat.saldo }}</td>
+                                    
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

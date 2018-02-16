@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- Icon -->
+
+        <meta name="theme-color" content="#ffffff">
+
+        <title>Recibo de Transaccion - Compra de Créditos</title>
+
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" /> 
+
+        <!-- Add custom CSS here -->
+
+        <style type="text/css">
+            .invoice-head td {
+                padding: 0 8px;
+            }
+            .container {
+                padding-top:30px;
+            }
+            .invoice-bodty{
+                background-color:transparent;
+            }
+            .invoice-thank{
+                margin-top: 60px;
+                padding: 5px;
+            }
+            address{
+                margin-top:15px;
+            }
+
+        </style>
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="/custom/assets/js/html5shiv.js"></script>
+          <script src="/custom/assets/js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="span4">
+                    <img src="{{ app.request.getSchemeAndHttpHost() ~ asset('bundles/app/images/logo.png') }}" style="width: 200px; height: auto">                    
+                    <address>
+                        <strong>Colegio de Escribanos de Catamarca</strong><br>
+                        Prado 337<br>
+                        Catamarca, Argentina<br>
+                    </address>
+                </div>
+                <div class="span4 well">
+                    <table class="invoice-head">
+                        <tbody>
+
+                            <tr>
+                                <td class="pull-right"><strong>Transaccion #:</strong></td>
+                                <td>{{ transaction.id}}</td>
+                            </tr>
+                            <tr>
+                                <td class="pull-right"><strong>Notario</strong></td>
+                                <td>{{ transaction.notary.lastname}}, {{ transaction.notary.firstname}}</td>
+                            </tr>
+                            <tr>
+                                <td class="pull-right"><strong>Fecha:</strong></td>
+                                <td>{{ transaction.createdAt | date('d/m/Y')}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span8">
+                    <h2>Recibo de Transacción - Compra de Créditos</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span8 well invoice-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Descripción</th>
+                                <th>Fecha</th>
+                                <th>Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ transaction.service.description }}</td>
+                                <td>{{ transaction.createdAt | date('d/m/Y')}}</td>
+                                <td>{{ transaction.ammount }}</td>
+                            </tr><tr>
+                                <td>&nbsp;</td>
+                                <td><strong>Total</strong></td>
+                                <td><strong>{{ transaction.ammount }}</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span8 well invoice-thank">
+                    <h5 style="text-align:center;">Plataforma Virtual</h5>
+                    <h6 style="text-align:center;"> Documento no válido como Factura </h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span3">
+                    <strong>Telefono:</strong> <a href="tel:0383-4430369">0383-4430369</a>
+                </div>
+                <div class="span3">
+                    <strong>Email:</strong> <a href="mailto:escribanoscatamarca@gmail.com">escribanoscatamarca@gmail.com</a>
+                </div>
+                <div class="span3">
+                    <strong>Web:</strong> <a href="http://www.escribanoscatamarca.com.ar">escribanoscatamarca.com.ar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function () {
+                $('.popover-dismiss').popover({
+                    trigger: 'click',
+                    animation: false
+                });
+            });
+        </script>
+    </body>
+</html>
+
+
